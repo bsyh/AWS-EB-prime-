@@ -38,7 +38,7 @@ def say_hello(n = "1"):
 header_text = '''
     <html>\n<head> <title>EB Flask Test</title> </head>\n<body>'''
 instructions = '''
-    <p><em>Hint</em>: This backend return the N-th prime number! Append a intrger
+    <p><em>Hint</em>: This backend returns the N-th prime number! Append a integer
     to the URL (for example: <code>/17</code>) to find the 17th prime number.</p>\n'''
 home_link = '<p><a href="/">Back</a></p>\n'
 footer_text = '</body>\n</html>'

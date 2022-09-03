@@ -1,16 +1,45 @@
 from flask import Flask
 
+def find_prime(n):
+    result = 0
+    prime_numbers = [2, 3]
+    i = 3
+    if (0 < n < 3):
+        # print(n, 'th Prime Number is :', prime_numbers[n - 1])
+        result=prime_numbers[n - 1]
+    elif (n > 2):
+        while (True):
+            i += 1
+            status = True
+            for j in range(2, int(i / 2) + 1):
+                if (i % j == 0):
+                    status = False
+                    break
+            if (status == True):
+                prime_numbers.append(i)
+            if (len(prime_numbers) == n):
+                break
+        # print(n, 'th Prime Number is :', prime_numbers[n - 1])
+        result=prime_numbers[n - 1]
+    else:
+        # print('Please Enter A Valid Number')
+        pass
+    return result
 # print a nice greeting.
-def say_hello(username = "World"):
-    return '<p>Hello %s!</p>\n' % username
+def say_hello(n = "1"):
+    try:
+        n=int(n)
+    except:
+        pass
+    return '<p>%s</p>\n' % find_prime(n)
+
 
 # some bits of text for the page.
 header_text = '''
     <html>\n<head> <title>EB Flask Test</title> </head>\n<body>'''
 instructions = '''
-    <p><em>Hint</em>: This is a RESTful web service! Append a username
-    to the URL (for example: <code>/Thelonious</code>) to say hello to
-    someone specific.</p>\n'''
+    <p><em>Hint</em>: This backend return the N-th prime number! Append a intrger
+    to the URL (for example: <code>/17</code>) to find the 17th prime number.</p>\n'''
 home_link = '<p><a href="/">Back</a></p>\n'
 footer_text = '</body>\n</html>'
 

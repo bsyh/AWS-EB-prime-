@@ -1,7 +1,13 @@
+-Using AWS Elastic Beanstalk as backend
 
-http://returnprime-env-1.eba-wphnvejr.us-east-1.elasticbeanstalk.com
+-Tracking IP and storing to AWS DynamoDB
+
+
+
 
 The backend returns the N-th prime number by adding a integer at the end of the url.
+
+
 
 For example:
 

@@ -1,4 +1,12 @@
 from flask import Flask
+import dynamo
+
+dynamodb = dynamo.create_session()
+response = dynamo.get_record(dynamodb, "IP_history")
+items = response['Items']
+
+
+
 
 def find_prime(n):
     result = 0
@@ -41,6 +49,17 @@ instructions = '''
     <p><em>Hint</em>: This backend returns the N-th prime number! Append a integer
     to the URL (for example: <code>/17</code>) to find the 17th prime number.</p>\n'''
 home_link = '<p><a href="/">Back</a></p>\n'
+record=''
+for i in items:
+    record += \
+        '<p>' + \
+        dynamo.int2ip(int(i['IP'])) + \
+        ' query ' + \
+        i['requested_index'] + \
+        ' on ' + \
+        str(i['time'])[:4]+"-"+str(i['time'])[4:6]+"-"+str(i['time'])[6:8]+" at "+str(i['time'])[8:10]+":"+str(i['time'])[10:12]+":"+str(i['time'])[12:14]  + \
+        '</p>\n'
+history_record = record
 footer_text = '</body>\n</html>'
 
 # EB looks for an 'application' callable by default.
@@ -48,7 +67,7 @@ application = Flask(__name__)
 
 # add a rule for the index page.
 application.add_url_rule('/', 'index', (lambda: header_text +
-    say_hello() + instructions + footer_text))
+    say_hello() + instructions +  '\n' + history_record + footer_text))
 
 # add a rule when the page is accessed with a name appended to the site
 # URL.

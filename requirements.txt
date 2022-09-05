@@ -4,3 +4,6 @@ itsdangerous==2.1.2
 Jinja2==3.1.1
 MarkupSafe==2.1.1
 Werkzeug==2.1.0
+boto3==1.24.66
+ipaddress==1.0.23
+datetime==4.5

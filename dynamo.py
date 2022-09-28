@@ -2,8 +2,8 @@ import boto3, ipaddress, datetime, json
 from botocore.exceptions import ClientError
 from pprint import pprint
 
-ACCESS_KEY = "AKIA4BJTBNFGHFVAJWLJ"
-SECRET_KEY = "zSCtXdc0+0668+uYbkR+RLWoOaXWWSyskBUlA7iT"
+ACCESS_KEY = "YOUR ACCESS_KEY"
+SECRET_KEY = "YOUR SECRET_KEY"
 
 def create_session():
     session = boto3.Session(aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
